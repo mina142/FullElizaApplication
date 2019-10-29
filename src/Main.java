@@ -1,18 +1,17 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.ListIterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static Scanner keyboard = new Scanner(System.in);
     public static String answer1;
     public static String answer;
+    public static String sentence;
     public static ArrayList<String> userInput = new ArrayList<String>();
 
     public static void main(String[] args) {
         System.out.print("Enter your response here or Q to quit: ");
          answer = keyboard.nextLine();
         split();
+        randomSentence();
         while (!answer.equalsIgnoreCase("q")) {
             userInput.clear();
             System.out.print("Enter your response here or Q to quit: ");
@@ -26,6 +25,7 @@ public class Main {
             } else {
                 //System.out.println(answer);
                 split();
+                randomSentence();
             }
         }
     }
@@ -41,11 +41,30 @@ public class Main {
         Collections.replaceAll(userInput, "my", "your");
         Collections.replaceAll(userInput, "am", "are");
 
-        String sentence = String.join(" ", userInput);
-        System.out.println(sentence);
+        sentence = String.join(" ", userInput);
+        //System.out.println("Why do you say that " + sentence);
+
 
     }
 
+    public static void randomSentence(){
+        Random rand = new Random();
+        int rand_int1 = rand.nextInt(4);
+        if(rand_int1 == 0 ){
+            System.out.println("So, you are concerned that "+ sentence);
+        }
+        else if(rand_int1 == 1){
+            System.out.println("You seem to think that " + sentence);
+        }
+        else if(rand_int1 == 2){
+            System.out.println("Why do you say that " + sentence);
+        }
+        else if(rand_int1 == 3){
+            System.out.println("You seem to think that " + sentence);
+        }
+
+
+    }
 
     /*    //another way to replace the words
         ListIterator<String> iterator = userInput.listIterator();
